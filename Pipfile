@@ -9,6 +9,8 @@ djangorestframework = "*"
 django-cors-headers = "*"
 channels = {extras = ["daphne"], version = "*"}
 channels-redis = "*"
+django-crispy-forms = "*"
+crispy-bootstrap4 = "*"
 
 [dev-packages]
 
