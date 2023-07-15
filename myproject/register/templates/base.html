@@ -1,0 +1,20 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat App</title>
+	
+	<link rel="stylesheet" href="{% static 'register/registration.css' %}">
+</head>
+<body>
+
+	<div>
+		{% block content %}
+		<p>Base Page</p>
+		<p><a href="/logout" style="color:blue;">Logout</a></p>
+		{% endblock content %}
+	</div>
+	
+</body>
+</html>
