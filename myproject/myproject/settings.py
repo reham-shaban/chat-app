@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    'django.contrib.sites',
+    
     # local
     'chat',
     'register',
@@ -37,6 +39,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'channels',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -48,6 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
     'corsheaders.middleware.CorsMiddleware',
+    'register.middleware.LoginMiddleware',
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True

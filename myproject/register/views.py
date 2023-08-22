@@ -13,17 +13,13 @@ class LoginView(LoginView):
     template_name = 'login.html'
 
     def get_success_url(self):
-        return '/chat'
+        return '/'
     
 # Logout
 @csrf_exempt
 def logout_view(request):
     logout(request)
     return redirect('/login')
-
-def base(request):
-    return render(request, 'base.html')
-
     
 # Register
 class RegisterView(CreateView):
@@ -40,4 +36,4 @@ class RegisterView(CreateView):
         user = authenticate(username=username, password=password)
         login(self.request, user)
 
-        return redirect('/chat')
+        return redirect('/')

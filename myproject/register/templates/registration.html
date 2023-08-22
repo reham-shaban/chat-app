@@ -6,7 +6,7 @@
 	<form method="POST">
 		{% csrf_token %}
 		{{form}}
-		<p>Already have an account? <a href="/login" style="color:blue;">Login</a></p>      
+		<p>Already have an account? <a href="/auth/login" style="color:blue;">Login</a></p>      
 		<button type="submit">Register</button>
 	</form>
 </div>
