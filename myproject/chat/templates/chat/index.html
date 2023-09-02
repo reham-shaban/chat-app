@@ -9,22 +9,27 @@
 <body>
     <div class="top-bar">
         <h1>Welcome {{my_username}}!</h1>
-        <a href="/logout" style="padding: 10px; background-color:#389b87;">Logout</a>
+        <a href="/logout" style="padding: 10px; background-color:#389b87; color:black;">Logout</a>
     </div>
 
     <div class="content">
         <h3>Enter a chat room ID:</h3>
         <input id="room-name-input" type="text" placeholder="Chat ID.." size="100">
         <input id="room-name-submit" type="button" value="Enter">
-
+      
+        {% if users %}
         <h3>Choose a user to chat with:</h3>
         <ul style="padding:20px;">
-        {% for user in users %}
+            {% for user in users %}           
             <li style="font-size:larger; font-weight:800;">
-                <a href="/chat/user/{{user.id}}">{{ user.username }}</a>
-            </li>
-        {% endfor %}
-        </ul>      
+                <a href="/user/{{user.id}}">{{ user.username }}</a>
+            </li>          
+            {% endfor %}
+        </ul>
+        {% else %}
+            <h3>No users to chat with yet.</h3>
+        {% endif %}
+                
     </div>
 
     <script>
@@ -37,7 +42,7 @@
 
         document.querySelector('#room-name-submit').onclick = function(e) {
             var roomName = document.querySelector('#room-name-input').value;
-            window.location.pathname = '/chat/' + roomName + '/';
+            window.location.pathname = '/' + roomName + '/';
         };
     </script>
 </body>

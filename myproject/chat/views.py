@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.utils.safestring import mark_safe
 import json
-from .models import Chat
+from .models import Chat, Message
 
 
 # Render index
@@ -31,9 +31,12 @@ def get_or_create_chat(user1, user2):
 def room_by_user(request, user_id):
     selected_user = get_object_or_404(User, pk=user_id)
     chat = get_or_create_chat(request.user, selected_user)
+    messages = Message.objects.filter(chat=chat)
     context = {
         'chat_id_json': mark_safe(json.dumps(chat.id)),
         'username': mark_safe(json.dumps(request.user.username)),
+        'user': request.user,
+        'messages': messages
     }
     return render(request, 'chat/room.html', context)
 
